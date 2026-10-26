@@ -1,9 +1,17 @@
 # MLDL Lab 3: Structuring a Deep Learning Project from Scratch
 
-My solution to Lab 3 of the *Machine Learning and Deep Learning* course at Politecnico di Torino.
-The goal of the lab is to turn notebook-style code into a clean, modular PyTorch project: a training script and an evaluation script with command-line arguments, reusable dataset and model modules, checkpointing, and experiment tracking with Weights & Biases.
+![Python](https://img.shields.io/badge/Python-3-3776AB?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.x-EE4C2C?logo=pytorch&logoColor=white)
+![Weights & Biases](https://img.shields.io/badge/Weights%20%26%20Biases-tracking-FFBE00?logo=weightsandbiases&logoColor=white)
+![Task](https://img.shields.io/badge/Task-image%20classification%20%C2%B7%20200%20classes-2ea44f)
 
+The goal of the lab is to turn notebook-style code into a clean, modular PyTorch project: a training script and an evaluation script with command-line arguments, reusable dataset and model modules, checkpointing, and experiment tracking with Weights & Biases.
 The task is image classification on **Tiny ImageNet** (200 classes) with a simple CNN.
+
+> **Lab 3** — Machine Learning and Deep Learning, Politecnico di Torino  
+> **Author:** Francesco Fabrizi
+
+---
 
 ## Project structure
 
@@ -19,11 +27,15 @@ mldl_lab3/
 └── requirements.txt
 ```
 
+---
+
 ## Model
 
 `SimpleCNN` has five 3×3 convolutions with stride 2 and ReLU (64 → 128 → 256 → 512 → 1024 channels).
 They are followed by global average pooling and a linear layer with 200 outputs.
 Input images are resized to 224×224 and normalised with ImageNet statistics.
+
+---
 
 ## Setup
 
@@ -36,6 +48,8 @@ wandb login   # or set WANDB_MODE=offline to skip online logging
 
 On the first run, Tiny ImageNet (~240 MB) is downloaded into `./data`.
 Its validation folder is then reorganised so that `torchvision.datasets.ImageFolder` can read it.
+
+---
 
 ## Usage
 
@@ -53,6 +67,8 @@ Evaluate a checkpoint:
 ```bash
 python eval.py --checkpoint_path checkpoints/model_best.pth.tar
 ```
+
+---
 
 ## Credits
 
